@@ -3,57 +3,42 @@ package chess;
 public class Chess {
 
     static String store = "♔♕♖♗♘♙♚♛♜♝♞♟";
-    static char wking = '♔';
-    static char wqueen = '♕';
-    static char wrook = '♖';
-    static char wbishop = '♗';
-    static char wknight = '♘';
-    static char wpawn = '♙';
-    static char bking = '♚';
-    static char bqueen = '♛';
-    static char brook = '♜';
-    static char bbishop = '♝';
-    static char bknight = '♞';
-    static char bpawn = '♟';
+//    static char wking = '♔';
+//    static char wqueen = '♕';
+//    static char wrook = '♖';
+//    static char wbishop = '♗';
+//    static char wknight = '♘';
+//    static char wpawn = '♙';
+//    static char bking = '♚';
+//    static char bqueen = '♛';
+//    static char brook = '♜';
+//    static char bbishop = '♝';
+//    static char bknight = '♞';
+//    static char bpawn = '♟';
     static char space1 = '█';
     static char space2 = ' ';
 
     public static char[][] board = new char[8][8];
+    public static King wking;
+    public static King bking;
+    public static Queen wqueen;
+    public static Queen bqueen;
+    public static Knight wknight1;
+    public static Knight wknight2;
+    public static Knight bknight1;
+    public static Knight bknight2;
 
     public static void main(String[] args) {
 //        board[2][5] = wknight;
-        board[0][0] = wrook;
-        board[0][7] = wrook;
-        board[0][1] = wknight;
-        board[0][6] = wknight;
-        board[0][2] = wbishop;
-        board[0][5] = wbishop;
-        board[0][3] = wking;
-        board[0][4] = wqueen;
-        board[1][0] = wpawn;
-        board[1][1] = wpawn;
-        board[1][2] = wpawn;
-        board[1][3] = wpawn;
-        board[1][4] = wpawn;
-        board[1][5] = wpawn;
-        board[1][6] = wpawn;
-        board[1][7] = wpawn;
-        board[7][0] = wrook;
-        board[7][7] = wrook;
-        board[7][1] = wknight;
-        board[7][6] = wknight;
-        board[7][2] = wbishop;
-        board[7][5] = wbishop;
-        board[7][3] = wking;
-        board[7][4] = wqueen;
-        board[6][0] = wpawn;
-        board[6][1] = wpawn;
-        board[6][2] = wpawn;
-        board[6][3] = wpawn;
-        board[6][4] = wpawn;
-        board[6][5] = wpawn;
-        board[6][6] = wpawn;
-        board[6][7] = wpawn;
+        wking = new King(0, 3, "white");
+        bking = new King(7, 4, "black");
+        wqueen = new Queen(0, 4, "white");
+        bqueen = new Queen(7, 3, "black");
+        wknight1 = new Knight(0, 1, "white");
+        wknight2 = new Knight(0, 6, "white");
+        bknight1 = new Knight(7, 1, "black");
+        bknight2 = new Knight(7, 6, "black");
+
         draw();
     }// end of main
 
@@ -61,8 +46,11 @@ public class Chess {
         for (int i = 0; i <= board[0].length - 1; i++) {
             for (int j = 0; j <= board[1].length - 1; j++) {
                 if (j < board[1].length - 1) {
-                    if (board[i][j] != wking && board[i][j] != wqueen && board[i][j] != wrook && board[i][j] != wbishop && board[i][j] != wknight && board[i][j] != wpawn
-                            && board[i][j] != bking && board[i][j] != bqueen && board[i][j] != brook && board[i][j] != bbishop && board[i][j] != bknight && board[i][j] != bpawn) {
+                    if (board[i][j] != wking.getSymbol() && board[i][j] != wqueen.getSymbol()
+                            && board[i][j] != wrook && board[i][j] != wbishop
+                            && board[i][j] != wknight1.getSymbol()) && board[i][j] != wknight2.getSymbol() && board[i][j] != wpawn
+                            && board[i][j] != bking.getSymbol() && board[i][j] != bqueen.getSymbol()
+                            && board[i][j] != brook && board[i][j] != bbishop && board[i][j] != bknight && board[i][j] != bpawn) {
                         if (j % 2 == 0) {
                             if (i % 2 == 0) {
                                 System.out.print(space1);
